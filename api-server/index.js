@@ -37,7 +37,7 @@ app.get('/sort', (req, res) => {
     const type = req.query.type;
     const array = listToArrayList(numbers);
 
-    if (type === "asc") {
+    if (type == "asc") {
         const result = sortArrayToAcs(array, array.length);
         res.status(result.status).json(result.data);
     } else {

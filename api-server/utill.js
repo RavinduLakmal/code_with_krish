@@ -73,15 +73,15 @@ export function sortArrayToAcs(array,size) {
 
 
     for (let i=1; i<=size; i++){
-        for (let j=1; j<=size-i; j++){
+        for (let s=1; s<=size-i; s++){
 
-          if(array[j]>array[j+1]){
+          if(array[s]>array[s+1]){
 
-            let temp = array[j];
+            let tVal = array[s];
 
-            array[j] = array[j+1];
+            array[s] = array[s+1];
 
-            array[j+1] = temp;
+            array[s+1] = tVal;
 
         }
     }
@@ -104,16 +104,16 @@ export function sortArrayToAcs(array,size) {
 export function sortArrayToDes(array,size) {
 
 
-    for (let i=0; i<size-1; i++){
-        for (let j=0; j< size-i-1; j++){
-            console.log(j)
-          if(array[j]<array[j+1]){
+    for (let i=1; i<=size; i++){
+        for (let s=1; s<=size-i; s++){
+            console.log(s)
+          if(array[s]<array[s+1]){
 
-            let temp = array[j];
+            let tVal = array[s];
 
-            array[j] = array[j+1];
+            array[s] = array[s+1];
 
-            array[j+1] = temp;
+            array[s+1] = tVal;
         }
     }
 
