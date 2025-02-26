@@ -72,8 +72,8 @@ export function identifiedAvg(array,size) {
 export function sortArrayToAcs(array,size) {
 
 
-    for (let i=0; i<size-1; i++){
-        for (let j=0; j<size-i-1; j++){
+    for (let i=1; i<=size; i++){
+        for (let j=1; j<=size-i; j++){
 
           if(array[j]>array[j+1]){
 
