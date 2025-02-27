@@ -41,7 +41,7 @@ app.get('/sort', (req, res) => {
         const result = sortArrayToAcs(array, array.length);
         res.status(result.status).json(result.data);
     } else {
-        const result = sortArrayToDes(array, array.length);
+        const result = sortArradyToDes(array, array.length);
         res.status(result.status).json(result.data);
 
     }
@@ -71,4 +71,4 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server is running on ${port}`);
-});
+}); 
