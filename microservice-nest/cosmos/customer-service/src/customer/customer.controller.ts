@@ -23,7 +23,7 @@ export class CustomerController {
     
     @Get(':id')
     async fetch(@Param('id') id) { // its coming from body lets say path use path
-
+        console.log("wada");
         return await this.customerService.fetch(id);
 
     }
@@ -40,4 +40,6 @@ export class CustomerController {
         return await this.customerService.updateCustomerStatus(id,updateCustomerStatus);
 
     }
+
+
 }

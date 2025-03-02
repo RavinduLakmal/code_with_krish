@@ -26,6 +26,7 @@ let CustomerController = class CustomerController {
         return await this.customerService.create(customerDto);
     }
     async fetch(id) {
+        console.log("wada");
         return await this.customerService.fetch(id);
     }
     async fetchAll() {
