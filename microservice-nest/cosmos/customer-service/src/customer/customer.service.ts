@@ -12,6 +12,11 @@ export class CustomerService {
         
     }
 
+    /**
+     * customer create when return created OBJ
+     * * *
+     * @param customerDto
+     */
     async create(customerDto:CustomerDto) : Promise<Customer|null>{
         
         const { name, email,address } = customerDto;
@@ -27,6 +32,11 @@ export class CustomerService {
 
     }
 
+    /**
+     * fetch customer By Id
+     * * *
+     * @param id
+     */
     
     async fetch(id: any) {
 
@@ -36,9 +46,19 @@ export class CustomerService {
 
     }
 
+    /**
+     * fetch all Customer*
+     */
+
     async fetchAll() {
         return await this.customerRepo.find()
     }
+
+    /**
+     * update customer status by id*
+     * @param id
+     * @param updateStatus
+     */
 
     async updateCustomerStatus(id: number, updateStatus: UpdateCustomerStatus) {
         const customer = await this.customerRepo.findOne({ where: { id } });

@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const createProduct = async (  obj: any) =>{
     try {
-        const response = await axios.post('http://localhost:3001/produts', obj);
+        const response = await axios.post('http://localhost:3001/products', obj);
         return response.data; 
       } catch (error) {
         console.error('Products Creating has a error:', error);
@@ -12,7 +12,7 @@ export const createProduct = async (  obj: any) =>{
 
 export const productFetchAll = async (): Promise<any> =>{
     try{
-        const resp = await fetch('http://localhost:3001/produts'); 
+        const resp = await fetch('http://localhost:3001/products'); 
         if (!resp.ok) {
             throw new Error('fetch Products was gailed');
         }
@@ -20,6 +20,6 @@ export const productFetchAll = async (): Promise<any> =>{
         return data; 
     }catch (error) {
         console.error('Products Fetching has a error:', error);
-        throw error; 
+        throw error;   
       }
 }

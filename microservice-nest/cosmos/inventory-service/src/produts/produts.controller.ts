@@ -11,6 +11,10 @@ export class ProdutsController {
 
     }
 
+    /**
+     * *
+     * @param customerDto
+     */
     @Post()
     async create(@Body() customerDto: ProductDto): Promise<Product | null> { 
 
@@ -18,6 +22,11 @@ export class ProdutsController {
 
     }
 
+
+    /**
+     * *
+     * @param id
+     */
     @Get(':id')
     async fetch(@Param('id') id) { 
 
@@ -25,17 +34,33 @@ export class ProdutsController {
 
     }
 
+    /**
+     * fetch all products*
+     */
+
     @Get()
     async fetchAll(){
         return await this.productService.fetchAll();
 
     }
 
+    /**
+     * fetch and validate stock*
+     * @param id
+     * @param quantity
+     */
+
     @Get(':id/validate')
     async validateStock(@Param('id') id,@Query('quantity', ParseIntPipe) quantity: number) {
         return await this.productService.validateStock(id,quantity);
 
     }
+
+    /**
+     * update status*
+     * @param id
+     * @param updateProductStatus
+     */
 
     @Patch(':id/status')
     async updatePartFromObject(@Param('id') id,@Body() updateProductStatus:UpdateProductStatus ){

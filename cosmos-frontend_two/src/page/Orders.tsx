@@ -64,7 +64,7 @@ const Orders = () => {
             const data = await productFetchAll();
             const formattedProducts = data.map((product: any) => ({
                 value: product.id,
-                label: `${product.name} - $${product.price}`,
+                label: `${product.name} - RS${product.price}`,
                 price: product.price,
             }));
             setProducts(formattedProducts);

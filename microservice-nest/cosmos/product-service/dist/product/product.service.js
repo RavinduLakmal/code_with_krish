@@ -70,7 +70,7 @@ let ProdutService = class ProdutService {
         await this.productRepo.save({ ...product, quantity: value });
         return true;
     }
-    async availbleStockByIdWithQty(id, qty) {
+    async availableStockByIdWithQty(id, qty) {
         const product = await this.productRepo.findOne({ where: { id } });
         if (!product) {
             throw new common_1.NotFoundException(`Product with id: ${id} is not found`);

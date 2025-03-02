@@ -12,6 +12,11 @@ export class ProdutsService {
         
     }
 
+    /**
+     *
+     * * *
+     * @param productDto
+     */
     async create(productDto:ProductDto) : Promise<Product|null>{
 
         const { name, price,quantity } = productDto;
@@ -20,6 +25,10 @@ export class ProdutsService {
 
     }
 
+    /**
+     * *
+     * @param id
+     */
     
     async fetch(id: any) {
 
@@ -29,9 +38,18 @@ export class ProdutsService {
 
     }
 
+    /**
+     * *
+     */
     async fetchAll() {
         return await this.productRepo.find()
     }
+
+    /**
+     * *
+     * @param id
+     * @param updateStatus
+     */
 
     async updateProductStatus(id: number, updateStatus: UpdateProductStatus) {
         const product = await this.productRepo.findOne({ where: { id } });
@@ -53,6 +71,12 @@ export class ProdutsService {
     }
 
 
+    /**
+     * Validate status by stock*
+     * @param id
+     * @param qty
+     */
+
     async  validateStock(id,qty) {
 
             const product = await this.productRepo.findOne({ where: { id } });
@@ -61,7 +85,7 @@ export class ProdutsService {
         }
 
         if(product.quantity>=qty){
-            return {"availabel":true}
+            return {"available":true}
         }else{
             return {"available": false}
         }

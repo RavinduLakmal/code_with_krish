@@ -21,6 +21,3 @@ export class Customer{
 
 }
 
-// function isUnique(arg0: { tableName: string; column: string; }): (target: Customer, propertyKey: "email") => void {
-//     throw new Error("Function not implemented.");
-// }

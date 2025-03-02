@@ -12,12 +12,21 @@ export class OrdersController {
 
     }
 
+    /**
+     * *
+     * @param createOrderDto
+     */
+
     @Post()
     async create(@Body() createOrderDto: createOrderDto): Promise<Order | null> { 
         return await this.orderService.create(createOrderDto);
 
     }
 
+    /**
+     * *
+     * @param id
+     */
 
     @Get(':id')
     async fetch(@Param('id') id) { 
@@ -25,6 +34,9 @@ export class OrdersController {
 
     }
 
+    /**
+     * *
+     */
     @Get()
     async fetchAll(){
 
@@ -32,6 +44,11 @@ export class OrdersController {
 
     }
 
+    /**
+     * *
+     * @param id
+     * @param updateOrderStatus
+     */
 
     @Patch(':id/status')
     async updatePartFromObject(@Param('id') id,@Body() updateOrderStatus:UpdateOrderStatus ){ 

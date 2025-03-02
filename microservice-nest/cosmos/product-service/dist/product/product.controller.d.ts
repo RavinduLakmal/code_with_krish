@@ -2,7 +2,7 @@ import { ProdutService } from './product.service';
 import { ProductDto } from './dto/product.dto';
 import { Product } from './entity/product.entity';
 import { UpdateProductStatus } from './dto/update-product.dto';
-export declare class ProdutController {
+export declare class ProductController {
     private productService;
     constructor(productService: ProdutService);
     create(productDto: ProductDto): Promise<Product | null>;
@@ -19,7 +19,7 @@ export declare class ProdutController {
     }>;
     updatePartFromObject(id: any, updateProductStatus: UpdateProductStatus): Promise<Product>;
     reduceTheStockByIdAndQTY(id: any, quantity: number): Promise<boolean>;
-    availbleStockById(id: any, quantity: number): Promise<{
+    availableStockById(id: any, quantity: number): Promise<{
         id: number;
         name: string;
         createdAt: Date;

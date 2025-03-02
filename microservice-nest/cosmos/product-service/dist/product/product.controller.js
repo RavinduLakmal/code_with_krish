@@ -12,12 +12,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProdutController = void 0;
+exports.ProductController = void 0;
 const common_1 = require("@nestjs/common");
 const product_service_1 = require("./product.service");
 const product_dto_1 = require("./dto/product.dto");
 const update_product_dto_1 = require("./dto/update-product.dto");
-let ProdutController = class ProdutController {
+let ProductController = class ProductController {
     productService;
     constructor(productService) {
         this.productService = productService;
@@ -41,31 +41,31 @@ let ProdutController = class ProdutController {
     async reduceTheStockByIdAndQTY(id, quantity) {
         return await this.productService.reduceTheStock(id, quantity);
     }
-    async availbleStockById(id, quantity) {
-        return await this.productService.availbleStockByIdWithQty(id, quantity);
+    async availableStockById(id, quantity) {
+        return await this.productService.availableStockByIdWithQty(id, quantity);
     }
 };
-exports.ProdutController = ProdutController;
+exports.ProductController = ProductController;
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [product_dto_1.ProductDto]),
     __metadata("design:returntype", Promise)
-], ProdutController.prototype, "create", null);
+], ProductController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], ProdutController.prototype, "fetch", null);
+], ProductController.prototype, "fetch", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], ProdutController.prototype, "fetchAll", null);
+], ProductController.prototype, "fetchAll", null);
 __decorate([
     (0, common_1.Get)(':id/validate'),
     __param(0, (0, common_1.Param)('id')),
@@ -73,7 +73,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Number]),
     __metadata("design:returntype", Promise)
-], ProdutController.prototype, "validateStock", null);
+], ProductController.prototype, "validateStock", null);
 __decorate([
     (0, common_1.Patch)(':id/status'),
     __param(0, (0, common_1.Param)('id')),
@@ -81,7 +81,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, update_product_dto_1.UpdateProductStatus]),
     __metadata("design:returntype", Promise)
-], ProdutController.prototype, "updatePartFromObject", null);
+], ProductController.prototype, "updatePartFromObject", null);
 __decorate([
     (0, common_1.Get)(':id/reduce/stock'),
     __param(0, (0, common_1.Param)('id')),
@@ -89,17 +89,17 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Number]),
     __metadata("design:returntype", Promise)
-], ProdutController.prototype, "reduceTheStockByIdAndQTY", null);
+], ProductController.prototype, "reduceTheStockByIdAndQTY", null);
 __decorate([
-    (0, common_1.Get)(':id/avaible/stock'),
+    (0, common_1.Get)(':id/available/stock'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Query)('quantity', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Number]),
     __metadata("design:returntype", Promise)
-], ProdutController.prototype, "availbleStockById", null);
-exports.ProdutController = ProdutController = __decorate([
-    (0, common_1.Controller)('produts'),
+], ProductController.prototype, "availableStockById", null);
+exports.ProductController = ProductController = __decorate([
+    (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [product_service_1.ProdutService])
-], ProdutController);
+], ProductController);
 //# sourceMappingURL=product.controller.js.map

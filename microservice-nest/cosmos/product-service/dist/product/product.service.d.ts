@@ -19,7 +19,7 @@ export declare class ProdutService {
         status: string;
     }>;
     reduceTheStock(id: any, qty: any): Promise<boolean>;
-    availbleStockByIdWithQty(id: any, qty: any): Promise<{
+    availableStockByIdWithQty(id: any, qty: any): Promise<{
         id: number;
         name: string;
         createdAt: Date;

@@ -1,4 +1,4 @@
-import { BadRequestException, HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from './entity/product.entity';
 import { Repository } from 'typeorm';
@@ -12,6 +12,11 @@ export class ProdutService {
 
     }
 
+    /**
+     * *
+     * @param productDto
+     */
+
     async create(productDto: ProductDto): Promise<Product | null> {
 
         const { name, price, quantity } = productDto;
@@ -20,6 +25,10 @@ export class ProdutService {
 
     }
 
+    /**
+     * *
+     * @param id
+     */
 
     async fetch(id: any) {
 
@@ -32,6 +41,12 @@ export class ProdutService {
     async fetchAll() {
         return await this.productRepo.find()
     }
+
+    /**
+     * *
+     * @param id
+     * @param updateStatus
+     */
 
     async updateProductStatus(id: number, updateStatus: UpdateProductStatus) {
         const product = await this.productRepo.findOne({ where: { id } });
@@ -52,6 +67,12 @@ export class ProdutService {
 
     }
 
+
+    /**
+     * *
+     * @param id
+     * @param qty
+     */
 
     async validateStock(id, qty) {
 
@@ -77,6 +98,12 @@ export class ProdutService {
     }
 
 
+    /**
+     * *
+     * @param id
+     * @param qty
+     */
+
     async reduceTheStock(id, qty) {
 
         const product = await this.productRepo.findOne({ where: { id } });
@@ -85,7 +112,13 @@ export class ProdutService {
         return true;
     }
 
-    async availbleStockByIdWithQty(id,qty){
+    /**
+     * *
+     * @param id
+     * @param qty
+     */
+
+    async availableStockByIdWithQty(id,qty){
         
         const product = await this.productRepo.findOne({ where: { id } });
         if (!product) {
