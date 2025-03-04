@@ -81,7 +81,7 @@ export const Customers = () => {
                 
             </Form> */}
 
-            <CustomerForm fetchCustomer={fetchCustomers}/>
+            <CustomerForm />
 
             <Table<Customer>
                 columns={tColoumns}

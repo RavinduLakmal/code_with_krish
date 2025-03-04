@@ -39,10 +39,12 @@ export class OrdersService {
                         const resp = await this.validateQuantityIsAvailbleForOrderOrNot(i.prductId, i.quantity);
 
                         if (!resp.data.available) {
+                            console.log(2)
                             throw new NotFoundException(`Qty is not enough when ${resp.data.name} `)
                             // break;
                         }
                     } catch (error) {
+                        console.log(1)
                         throw new NotFoundException(` ${error.message}`);
                     }
                 })
@@ -50,6 +52,7 @@ export class OrdersService {
 
             value.forEach((res,index)=>{
                 if (res.status === 'rejected') {
+                    console.log(3)
                     throw new NotFoundException(`${res.reason}`)
 
                   }
@@ -84,6 +87,7 @@ export class OrdersService {
                 relations: ['items'],
             });
         } catch (error: any) {
+
             return (error)
         }
 
@@ -169,7 +173,7 @@ export class OrdersService {
 
         try {
             const response = await lastValueFrom(this.httpService.get(`${OrderApi.PRODUCT}/${id}/validate?quantity=${qty}`));
-
+            console.log(response)
             return response;
         } catch (error) {
             throw error;

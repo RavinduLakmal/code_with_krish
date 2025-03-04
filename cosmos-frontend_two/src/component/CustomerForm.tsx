@@ -1,16 +1,10 @@
 import React from 'react';
-import { Table, Form, Input, Button, notification } from 'antd';
+import {  Form, Input, Button, notification } from 'antd';
 import { createCustomer } from '../service/CustomerService';
 
-interface Customer {
-    key: React.Key;
-    name: string;
-    email: string;
-    address: string;
-}
 
 
-export const CustomerForm = ({ fetchCustomer }: { fetchCustomer?: () => void }) => {
+export const CustomerForm = () => {
 
 
     const createCustomerOnFinish = async (values:any)=>{
@@ -18,11 +12,11 @@ export const CustomerForm = ({ fetchCustomer }: { fetchCustomer?: () => void }) 
             name:values.name,email:values.email, address:values.address
         }
         try{
-            const newCustomer = await createCustomer(obj);
-            {fetchCustomer}
+            await createCustomer(obj);
+            // {fetchCustomer}
             notification.success({
                 message: 'Customer Created',
-                description: `Customer ${newCustomer.name} has been successfully created.`,
+                description: 'Customer has been successfully created.',
             });
         }catch(error){
             alert(error);

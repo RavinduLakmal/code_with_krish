@@ -6,7 +6,7 @@ import { productFetchAll } from '../service/ProductService';
 import type { TableColumnsType } from 'antd';
 
 interface OrderItem {
-    productId: number;
+    prductId: number;
     price: number;
     quantity: number;
 }
@@ -92,7 +92,7 @@ const Orders = () => {
     };
 
     const addOrderItem = () => {
-        setOrderItems([...orderItems, { productId: products[0]?.value || 0, price: products[0]?.price || 0, quantity: 1 }]);
+        setOrderItems([...orderItems, { prductId: products[0]?.value || 0, price: products[0]?.price || 0, quantity: 1 }]);
     };
 
     const updateOrderItem = (index: number, field: string, value: any) => {
@@ -114,7 +114,7 @@ const Orders = () => {
                 <ul>
                     {items.map((item, index) => (
                         <li key={index}>
-                            Product {item.productId} - Quantity: {item.quantity} - {item.price}
+                            Product {item.prductId} - Quantity: {item.quantity} - {item.price}
                         </li>
                     ))}
                 </ul>
@@ -124,7 +124,7 @@ const Orders = () => {
 
     const calculation=(value: number,index: number)=>{
         const selectedProduct = products.find((p) => p.value === value);
-                                updateOrderItem(index, 'productId', value);
+                                updateOrderItem(index, 'prductId', value);
                                 updateOrderItem(index, 'price', selectedProduct?.price || 0);
     }
 
@@ -151,7 +151,7 @@ const Orders = () => {
                     <div key={index} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
                         <Select
                             style={{ width: 200 }}
-                            value={item.productId}
+                            value={item.prductId}
                             onChange={(value) => 
                                 calculation(value,index)
                             }
