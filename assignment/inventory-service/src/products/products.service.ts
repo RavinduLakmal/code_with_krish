@@ -92,7 +92,7 @@ export class ProductsService implements OnModuleInit {
           await this.redis.del(lockKey);
         }
 
-        console.log(city)
+
         await this.producer.send(
           {
             topic: `ravindulakmal624.order.inventory.update`,
