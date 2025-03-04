@@ -47,22 +47,27 @@ export class VehicleService implements OnModuleInit {
         await this.consumer.run({
             eachMessage: async ({ message }) => {
                 const { id, city } = JSON.parse(message.value.toString());
-                console.log(" ========== ",city)
                 const vehicles = await this.fetchAllVehicle(city);
 
-                console.log(vehicles,"------->")
                 for (const vehicle of vehicles) {
                     const lockKey = `ravindu624:vehicle:${vehicle.vehicleNo}:lock`
                     const lock = await this.redis.set(lockKey, 'locked', 'EX', 3600 * 24, 'NX')
                     if (lock) {
-                        console.log(`lock by this vehicle:${vehicle.vehicleNo} and vehicleKey:${lockKey}`)
+                        console.log(`Order ${id} lock by this vehicle:${vehicle.vehicleNo} and vehicleKey:${lockKey}`)
+                        const lockDelivery = `ravindu624:OrderID:${id}:lock`
+
+                         await this.redis.set(lockDelivery, 'DELEIVERY', 'EX', 3600 * 24, 'NX')
+
+                        
                         break;
                     } else {
-                        console.log(`locked by this vehicle:${vehicle.vehicleNo} and vehicleKey:${lockKey}`)
+                        console.log(` Order ${id} locked by this vehicle:${vehicle.vehicleNo} and vehicleKey:${lockKey}`)
 
                     }
 
                 }
+
+               
 
 
             }

@@ -45,6 +45,7 @@ export class OrdersService implements OnModuleInit {
     await this.producer.connect()
     await this.consumer.connect()
     await this.functionforListenStock();
+    
   }
 
   async create(createOrderDto: createOrderDto): Promise<any> {
@@ -233,7 +234,7 @@ export class OrdersService implements OnModuleInit {
     this.producer.send({
       topic: `ravindulakmal624.order.confirm`,
       messages: [
-        { value: JSON.stringify({ id }) }
+        { value: JSON.stringify({ id ,city}) }
       ]
     })
 
